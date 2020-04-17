@@ -1,0 +1,64 @@
+<h3>Contacts List.</h3>
+
+<div class="card" *ngFor="let contact of listContacts; let i = index" [attr.data-index]="i">
+    <div class="class-header">
+        <h4>Name: {{contact.firstName}} {{contact.lastName}}</h4>
+    </div>
+    <div class="card-body">
+        <ul>First Name: {{contact.firstName}}</ul>
+        <ul>Last Name: {{contact.lastName}}</ul>
+        <ul>Phone Number: {{contact.phone}}</ul>
+        <ul>Email: {{contact.mail}}</ul>
+    </div>
+
+    <button class="btn btn-primary" (click)="delete(contact.id, i)">Delete</button>
+    <button class="btn btn-primary" (click)="selectedContact=contact.id">Edit</button>
+    
+    <div *ngIf="selectedContact==contact.id" class="container" style="background-color: lightskyblue;">
+        <p> Please edit the contact. </p>
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <p>First Name: </p>
+                    <input 
+                        class="form-control" 
+                        type="text" 
+                        [(ngModel)]="cFirstName"
+                        placeholder="{{contact.firstName}}"
+                    >
+                </div>
+                <div class="form-group">
+                    <p>Last Name: </p>
+                    <input 
+                        class="form-control" 
+                        type="text" 
+                        [(ngModel)]="cLastName" 
+                        placeholder="{{contact.lastName}}"
+                    >
+                </div>
+                <div class="form-group">
+                    <p>Phone Number:</p>
+                    <input 
+                        class="form-control" 
+                        type="text" 
+                        [(ngModel)]="cPhone" 
+                        placeholder="{{contact.phone}}"
+                    >
+                </div>
+                <div class="form-group">
+                    <p>Email: </p>
+                    <input 
+                        class="form-control" 
+                        type="text" 
+                        [(ngModel)]="cMail" 
+                        placeholder="{{contact.mail}}"
+                    >
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" (click)="updateContact(contact,i)">Update Contact</button>
+                    <button class="btn btn-primary" (click)="selectedContact=null">Close Edit field</button>
+                </div>
+            </div>
+        </div>
+    </div>     
+</div>

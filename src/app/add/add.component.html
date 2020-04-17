@@ -1,0 +1,28 @@
+<div class="container">
+    <p> Please add a contact. </p>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                <input class="form-control" type="text" [(ngModel)]="cFirstName" (ngModelChange)="show=false" placeholder="Contact First Name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" [(ngModel)]="cLastName" (ngModelChange)="show=false" placeholder="Contact Last Name">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" [(ngModel)]="cPhone" (ngModelChange)="show=false" placeholder="Contact Phone">
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" [(ngModel)]="cMail" (ngModelChange)="show=false" placeholder="Contact Mail">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" (click)="addNewContact()">Add Contact</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="show" class="container" style="background-color: lightgreen;">
+    <h1>Saved contact</h1>
+    <p>{{cFirstName}} {{cLastName}}</p>
+    <p>Phone: {{cPhone}}</p>
+</div>
